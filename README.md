@@ -7,7 +7,7 @@ If you have python installed, you can easily start the applilcation by running t
 ```
 python -m SimpleHTTPServer
 ```
-then open your web explorer and go to http://localhost:8000/
+then open your web explorer and go to **http://localhost:8000/**
 
 or if you prefer using node, just install 
 ```
@@ -17,4 +17,4 @@ and then execute the
 ```
 http-server
 ```
-command in the projects folder 
+command in the projects folder, then go to **http://127.0.0.1:8081**
