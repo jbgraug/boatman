@@ -1,0 +1,62 @@
+<!-- Boat list -->
+<div class='container'>
+    <h3>Boat List 
+        <button class="pull-right btn btn-primary btn-lg btn-md btn-sm"
+                data-toggle="modal" data-target="#BoatModalForm">New Boat
+        </button>
+    </h3>
+    <hr>
+    <ul>
+        <li ng-repeat="b in bc.boats track by b.id" >
+            <a ng-click="bc.viewDetail(b)" ng-bind="b.id + ' ' + b.code + ' ' + b.name"></a>
+        </li>
+    </ul>
+</div>
+
+<!-- Add boat modal form -->
+<!-- TODO: split into a separate template & controller -->
+<div class="modal fade" id="BoatModalForm">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>New boat</h3>
+            </div>
+            <form ng-submit="bc.saveBoat(bc.newBoat)"
+                  class="form">
+                <div class="modal-body">
+                    <fieldset class="form-group">
+                        <label for="inCode">
+                            Code</label>
+                        <input type="text" class="form-control" 
+                               id="inCode" 
+                               ng-model="bc.newBoat.code"
+                               placeholder="Enter code">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="inName">
+                            Name</label>
+                        <input type="text" class="form-control" 
+                               id="inName"
+                               ng-model="bc.newBoat.name"
+                               placeholder="Enter Name">
+                    </fieldset>
+                    <fieldset class="form-group">
+                        <label for="inModel">
+                            Model</label>
+                        <input type="text" class="form-control" 
+                               id="inModel" 
+                               ng-model="bc.newBoat.model"
+                               placeholder="Enter Model">
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-warning" 
+                            data-dismiss="modal">Cancel</button>
+                    <input type="submit" 
+                           class="btn primary-btn" 
+                           value="Submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

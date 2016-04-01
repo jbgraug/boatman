@@ -1,0 +1,65 @@
+<div class='container'>
+    <h3>Boat Details</h3>
+    <ul>
+        <li><b>Code: </b><span ng-bind="bc.selectedBoat.code"></span></li>
+        <li><b>Name: </b><span ng-bind="bc.selectedBoat.name"></span></li>
+        <li><b>Model: </b><span ng-bind="bc.selectedBoat.model"></span></li>
+    </ul>
+    <hr/>
+    <h3>Included equipment
+        <button class="pull-right btn btn-primary btn-lg btn-md btn-sm"
+                data-toggle="modal" data-target="#AddEqModalForm">Add Equipment
+        </button>
+    </h3>
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="e in bc.selectedBoat.equipment track by e.id">
+                <td><span ng-bind="e.name"></span></td>
+                <td><span ng-bind="e.description"></span></td>
+                <td><button class="btn btn-sm  btn-danger pull-right" 
+                            ng-click="bc.delEquipment(bc.selectedBoat,e)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Add boat modal form -->
+<!-- TODO: split into a separate template & controller -->
+<div class="modal fade" id="AddEqModalForm">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Equipment</h3>
+            </div>
+            <form ng-submit="bc.addEquipment(bc.selectedBoat,bc.selectedEquipment)"
+                  class="form">
+                <div class="modal-body">
+                    <fieldset class="form-group">
+                        <label for="inCode">
+                            Equipment</label>
+                        <select ng-controller="EquipmentCtrl as eqc"
+                                class="form-control"  
+                               id="inEq" 
+                               data-ng-model="bc.selectedEquipment"
+                               data-ng-options="e as e.name for e in eqc.equipment track by e.id"
+                            placeholder="Select equipment">
+                        </select>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-warning" 
+                            data-dismiss="modal">Close</button>
+                    <input type="submit" 
+                           class="btn primary-btn" 
+                           value="Submit" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
